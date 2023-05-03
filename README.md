@@ -1,6 +1,8 @@
 # django_maktabkhooneh_advanced_course
 
-
+# Advanced Django course topics
+    1- Introduction
+    2- asdasd
 
 # Project testing tools
     * Travis-CI
