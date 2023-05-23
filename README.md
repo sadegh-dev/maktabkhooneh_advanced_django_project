@@ -2,7 +2,8 @@
 
 # Advanced Django course topics
     1- Introduction
-    2- Project preparation [dockerize]
+    2- Project preparation
+        * dockerize
     3- Create a model for the project
     4- ClassBasedViews
     5- Restframework, Serializers
