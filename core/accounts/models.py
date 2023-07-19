@@ -20,12 +20,13 @@ class CustomUserManager(BaseUserManager):
         user.save()
         return user
 
-    
     def create_superuser(self, email, password, **extra_fields):
         """
         create normal superuser record by email and password fields
         and set access level of superuser
         """
+
+
 
 
 
@@ -46,6 +47,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
     email = models.EmailField(max_length=255, unique=True)
     is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     #is_verified = models.BooleanField(default=False)
 
