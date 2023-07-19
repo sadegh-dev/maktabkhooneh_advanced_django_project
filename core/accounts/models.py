@@ -1,7 +1,32 @@
 from django.db import models
+
 from django.contrib.auth.models import (
-    AbstractBaseUser, PermissionsMixin 
+    AbstractBaseUser, PermissionsMixin, BaseUserManager 
 )
+from django.utils.translation import ugettext_lazy as _
+
+
+
+class CustomUserManager(BaseUserManager):
+    """
+    This class is designed to handle User-class behaviors.
+    """
+    def create_user(self, email, password, **extra_fields):
+        """create normal user record by email and password fields"""
+        if not email:
+            raise ValueError(_("the email is required"))
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.save()
+        return user
+
+    
+    def create_superuser(self, email, password, **extra_fields):
+        """
+        create normal superuser record by email and password fields
+        and set access level of superuser
+        """
+
 
 
 """
@@ -9,9 +34,16 @@ from django.contrib.auth.models import (
     - include permission and access level and groups.
     - class of inheritance AbstractBaseUSer needs this.
     [click on PermissionsMixin and see details.]
+
+* AbstractBaseUser and AbstractUser has password field by default.
 """
 
 class User(AbstractBaseUser, PermissionsMixin):
+    """
+    about class User :
+    - this inheritances from AbstractBaseUser and PermissionsMixin.
+    - email field is unique and PrimaryKey for this table.
+    """
     email = models.EmailField(max_length=255, unique=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -20,6 +52,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
+    objects = CustomUserManager()
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
