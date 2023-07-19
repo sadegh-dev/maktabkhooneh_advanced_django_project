@@ -26,8 +26,17 @@ class CustomUserManager(BaseUserManager):
         and set access level of superuser
         """
 
+        # set high-level access field to True
+        extra_fields.setdefault('is_staff',True)
+        extra_fields.setdefault('is_superuser',True)
+        extra_fields.setdefault('is_active',True)
 
-
+        # check high-level fields
+        if extra_fields.get("is_staff") is not True:
+            raise ValueError(_('for superuser, is_staff field must be True'))
+        if extra_fields.get("is_superuser") is not True:
+            raise ValueError(_('for superuser, is_staff field must be True'))
+        return self.create_user(email, password, **extra_fields)
 
 
 """
