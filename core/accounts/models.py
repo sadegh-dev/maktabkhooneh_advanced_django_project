@@ -3,8 +3,8 @@ from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser, PermissionsMixin, BaseUserManager 
 )
-from django.utils.translation import ugettext_lazy as _
 
+#from django.utils.translation import ugettext_lazy as _
 
 
 class CustomUserManager(BaseUserManager):
@@ -14,7 +14,8 @@ class CustomUserManager(BaseUserManager):
     def create_user(self, email, password, **extra_fields):
         """create normal user record by email and password fields"""
         if not email:
-            raise ValueError(_("the email is required"))
+            #raise ValueError(_("the email is required"))
+            raise ValueError("the email is required")
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.save()
@@ -33,9 +34,11 @@ class CustomUserManager(BaseUserManager):
 
         # check high-level fields
         if extra_fields.get("is_staff") is not True:
-            raise ValueError(_('for superuser, is_staff field must be True'))
+            #raise ValueError(_('for superuser, is_staff field must be True'))
+            raise ValueError('for superuser, is_staff field must be True')
         if extra_fields.get("is_superuser") is not True:
-            raise ValueError(_('for superuser, is_staff field must be True'))
+            #raise ValueError(_('for superuser, is_staff field must be True'))
+            raise ValueError('for superuser, is_staff field must be True')
         return self.create_user(email, password, **extra_fields)
 
 
