@@ -22,6 +22,16 @@ class CustomUserAdmin(UserAdmin):
                 'is_active', 'is_staff', 'is_superuser'
             ),
         }),
+        ('group permissions', {
+            "fields": (
+                'groups', 'user_permissions',
+            ),
+        }),
+        ('important date', {
+            "fields": (
+                'last_login',
+            ),
+        }),
     )
 
     # form for add information
@@ -35,7 +45,7 @@ class CustomUserAdmin(UserAdmin):
             "fields": (
                 'is_active', 'is_staff', 'is_superuser'
             ),
-        }),
+        })
     )
 
 
