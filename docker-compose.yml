@@ -13,3 +13,4 @@ services:
       - SECRET_KEY=django-insecure-zycxl)x2izh11t%brm^b6hpu=!*%098(j0t1sr8&sekpbil@4e
       - DEBUG=True
       #- ALLOWED_HOSTS = *
+
