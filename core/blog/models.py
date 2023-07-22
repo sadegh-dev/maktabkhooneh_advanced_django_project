@@ -1,38 +1,43 @@
-# from django.db import models
+from django.db import models
+from django.contrib.auth import get_user_model
 
 
-# class Category(models.Model):
-#     """
-#     class of Category include jus name field
-#     """
-#     name = models.CharField(max_length=250)
-
-#     def __str__(self):
-#         return self.name
+# getting user model object
+User = get_user_model()
 
 
-# class Post(models.Model):
-#     """
-#     class of Book has two ForeignKey relations.
-#     """
-#     image = models.ImageField(null=True, blank=True)
-#     title = models.CharField(max_length=250)
-#     content = models.TextField()
-#     status = models.BooleanField(default=False)
-#     published_date = models.DateTimeField()
-#     author = models.ForeignKey(
-#         'User', 
-#         on_delete=models.CASCADE
-#     )
-#     category = models.ForeignKey(
-#         Category, 
-#         on_delete=models.SET_NULL, 
-#         null=True, 
-#         blank=True
-#     )
+class Category(models.Model):
+    """
+    class of Category include jus name field
+    """
+    name = models.CharField(max_length=250)
 
-#     created_date = models.DateTimeField(auto_now_add=True)
-#     updated_date = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.name
 
-#     def __str__(self):
-#         return self.title
+
+class Post(models.Model):
+    """
+    class of Book has two ForeignKey relations.
+    """
+    image = models.ImageField(null=True, blank=True)
+    title = models.CharField(max_length=250)
+    content = models.TextField()
+    status = models.BooleanField(default=False)
+    published_date = models.DateTimeField()
+    author = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE
+    )
+    category = models.ForeignKey(
+        Category, 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True
+    )
+
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
