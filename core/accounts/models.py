@@ -6,6 +6,11 @@ from django.contrib.auth.models import (
 
 #from django.utils.translation import ugettext_lazy as _
 
+# signals
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+
 
 class CustomUserManager(BaseUserManager):
     """
@@ -92,4 +97,15 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"{self.user.email} | {self.first_name} {self.last_name}"
+
+
+
+# signal
+@receiver(post_save, sender=User)
+def save_profile(sender, instance, created, **kwargs):
+    """
+    create profile record by signal from user-class
+    """
+    if created :
+        Profile.objects.create(user=instance)
 
