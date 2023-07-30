@@ -126,7 +126,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 # more static directories
 STATICFILES_DIRS = [
-    BASE_DIR / "staticfiels",
+    #BASE_DIR / "staticfiels",
     #"/var/www/static/",
 ]
 
