@@ -26,8 +26,10 @@ urlpatterns = [
 ]
 
 
-# Use in Development status 
-# for media and static files
+'''
+    Use in Development status 
+    for media and static files 
+'''
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
