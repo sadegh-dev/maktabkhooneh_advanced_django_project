@@ -5,6 +5,11 @@ from .models import Category, Post
 
 
 class HomeView(TemplateView):
+    """
+    a class for the main page 
+    and viewing some content 
+    """
+    
     template_name = 'blog/home.html'
 
     def get_context_data(self, **kwargs):
