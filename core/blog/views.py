@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic.base import RedirectView
 from django.views.generic import (
@@ -31,5 +32,11 @@ class RedirectToHomePage(RedirectView):
 
 class PostList(ListView):
     """a class for list of posts"""
-    pass
+    
+    #model = Post
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        result = Post.objects.all()
+        return result
 
