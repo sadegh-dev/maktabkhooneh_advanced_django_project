@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
-
+from django.views.generic.base import RedirectView
+from django.views.generic import (
+    TemplateView,
+    ListView
+)
 from .models import Category, Post
 
 
@@ -18,4 +21,15 @@ class HomeView(TemplateView):
         context['posts'] = Post.objects.all()[:2]
         context['categories'] = Category.objects.all()[:3]
         return context
+
+
+class RedirectToHomePage(RedirectView):
+    """ a class for go to home page """
+
+    pattern_name = 'blog:home'
+
+
+class PostList(ListView):
+    """a class for list of posts"""
+    pass
 
