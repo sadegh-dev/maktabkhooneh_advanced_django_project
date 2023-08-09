@@ -1,12 +1,19 @@
-from rest_framework import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
+from rest_framework import status
+from django.shortcuts import get_object_or_404
+
 from .serializers import PostSerializer
+from blog.models import Post
 
 
 @api_view(["GET", "POST"])
 def postList(request):
     if request.method == "GET":
-        pass
+        posts = Post.objects.filter(status=True)
+        ser_data = PostSerializer(posts, many=True)
+        return Response(ser_data.data)
     elif request.method == "POST":
         info = PostSerializer(data=request.data)
         info.is_valid(raise_exception=True)
