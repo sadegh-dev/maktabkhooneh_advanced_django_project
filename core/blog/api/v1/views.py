@@ -14,11 +14,6 @@ def postList(request):
         posts = Post.objects.filter(status=True)
         ser_data = PostSerializer(posts, many=True)
         return Response(ser_data.data)
-    elif request.method == "POST":
-        info = PostSerializer(data=request.data)
-        info.is_valid(raise_exception=True)
-        info.save()
-        return Response(info.data)
 
 
 
