@@ -18,7 +18,27 @@ def postList(request):
 
 
 
+@api_view(["GET"])
+def postDetails(request, id):
+    if request.method == "GET":
+        posts = get_object_or_404(Post, id=id)
+        ser_data = PostSerializer(posts)
+        return Response(ser_data.data)
 
+
+"""
+@api_view(["GET"])
+def postDetails(request):
+    if request.method == "GET":
+        posts = Post.objects.filter(status=True)
+        ser_data = PostSerializer(posts, many=True)
+        return Response(ser_data.data)
+    elif request.method == "POST":
+        info = PostSerializer(data=request.data)
+        info.is_valid(raise_exception=True)
+        info.save()
+        return Response(info.data)
+"""
 
 
 
