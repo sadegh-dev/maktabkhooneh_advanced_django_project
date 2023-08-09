@@ -8,7 +8,7 @@ from .serializers import PostSerializer
 from blog.models import Post
 
 
-@api_view(["GET", "POST"])
+@api_view(["GET"])
 def postList(request):
     if request.method == "GET":
         posts = Post.objects.filter(status=True)
