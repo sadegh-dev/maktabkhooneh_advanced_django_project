@@ -2,7 +2,7 @@ from rest_framework import serializers
 from blog.models import Category, Post
 
 
-class CategorySerializer(serializer.ModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     class Meta :
         fields = ['id', 'name']
 
