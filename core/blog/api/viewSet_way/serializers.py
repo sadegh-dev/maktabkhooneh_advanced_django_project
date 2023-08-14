@@ -19,5 +19,6 @@ class PostSerializer(serializers.ModelSerializer) :
             'created_date',
             'updated_date'            
         ]
+        read_only_fields = ['id', 'image', 'created_date', 'updated_date']
 
 
