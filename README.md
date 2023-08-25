@@ -29,7 +29,7 @@ These are the elements outlined in John Gruber’s original design document. All
 ## All Sections
 
 1. [ ] Intro
-2. [x]Project preparation
+2. [x] Project preparation
 3. Create Model for the project
 4. Class Based Views (CBV)
 5. Rest Framework and Serializers
