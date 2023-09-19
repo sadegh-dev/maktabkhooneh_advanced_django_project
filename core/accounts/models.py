@@ -1,5 +1,17 @@
 from django.db import models
 
+
+class Category(models.Model):
+    '''
+    A model class to determine the category of posts.
+    '''
+    name = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.name
+
+
+
 class Post(models.Model):
     '''
     This is to save details of blog posts.
