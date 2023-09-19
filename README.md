@@ -25,3 +25,7 @@ This training is in Persian language.
 17. Preparing to deploy
 18. VPS purchase and preparation
 19. Introduction and implementation of CD in Github actions
+
+
+## Tips on project development:
+    - Because this project has never been launched and is only for running on the internal server, that's why the actual value of the SECRET_KEY variable is inside the project.
