@@ -29,3 +29,4 @@ This training is in Persian language.
 
 ## Tips on project development:
     - Because this project has never been launched and is only for running on the internal server, that's why the actual value of the SECRET_KEY variable is inside the project.
+### this
