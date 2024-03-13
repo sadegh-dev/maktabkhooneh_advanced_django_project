@@ -6,12 +6,12 @@ This training is in Persian language.
 
 ## All Sections
 
-1. Intro
-2. Project preparation
-3. Create Model for the project
-4. Class Based Views (CBV)
-5. Rest Framework and Serializers
-6. Class Based Views in Rest Framework
+1. Intro *
+2. Project preparation * 
+3. Create Model for the project * 
+4. Class Based Views (CBV) *
+5. Rest Framework and Serializers * 
+6. Class Based Views in Rest Framework *
 7. Create API document
 8. Authentication API
 9. Reformat and Lint
